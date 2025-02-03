@@ -83,32 +83,62 @@ function startQuizWithQuestions(questions) {
 
   function renderQuestion(question) {
     const questionContainer = document.querySelector('.question-container');
-    questionContainer.innerHTML = `
-      <div class="question">${question.text}</div>
-      <div class="options">
-        ${question.options
-          .map((option, index) => `<button class="option" data-index="${index}">${option}</button>`)
-          .join('')}
-      </div>
-    `;
+    
+    // Fade out current question
+    gsap.to(questionContainer, {
+        opacity: 0,
+        duration: 0.3,
+        onComplete: () => {
+            // Update question content
+            questionContainer.innerHTML = `
+                <div class="question">${question.text}</div>
+                <div class="options">
+                    ${question.options
+                        .map((option, index) => `<button class="option" data-index="${index}">${option}</button>`)
+                        .join('')}
+                </div>
+            `;
+            
+            // Fade in new question
+            gsap.to(questionContainer, {
+                opacity: 1,
+                duration: 0.3
+            });
+            
+            // Attach event listeners to options
+            document.querySelectorAll('.option').forEach((button) => {
+              button.addEventListener('click', (e) => {
+                const selectedIndex = parseInt(e.target.dataset.index);
+                if (selectedIndex === question.correct) {
+                  score += question.weight; // Add weight if correct
+                }
 
-    // Attach event listeners to each option
-    document.querySelectorAll('.option').forEach((button) => {
-      button.addEventListener('click', (e) => {
-        const selectedIndex = parseInt(e.target.dataset.index);
-        if (selectedIndex === question.correct) {
-          score += question.weight; // Add weight if correct
+                handleAnswer(button, selectedIndex === question.correct);
+              });
+            });
         }
+    });
+  }
 
+  function handleAnswer(button, isCorrect) {
+    // Disable all buttons
+    document.querySelectorAll('.option').forEach(btn => {
+        btn.disabled = true;
+    });
+    
+    // Add visual feedback
+    button.classList.add(isCorrect ? 'correct' : 'incorrect');
+    
+    // Wait before moving to next question
+    setTimeout(() => {
         currentQuestion++;
         if (currentQuestion < questions.length) {
-          renderQuestion(questions[currentQuestion]);
+            renderQuestion(questions[currentQuestion]);
         } else {
-          clearInterval(timerInterval);
-          endQuiz();
+            clearInterval(timerInterval);
+            endQuiz();
         }
-      });
-    });
+    }, 1000);
   }
 
   function endQuiz() {
@@ -142,6 +172,12 @@ function startQuizWithQuestions(questions) {
     document.querySelector('.restart-quiz').addEventListener('click', () => {
       location.reload(); // Restart the quiz
     });
+  }
+
+  function updateProgress() {
+    const progressBar = document.querySelector('.progress-bar');
+    const progress = (currentQuestion / questions.length) * 100;
+    progressBar.style.width = `${progress}%`;
   }
 }
 
