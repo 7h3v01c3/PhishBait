@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Quiz</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+</head>
+<body>
+  <div class="header">
+    <img src="assets/logo.png" alt="PhishBait Logo" class="logo">
+    <h1 class="tagline"></h1> <!-- Dynamic tagline -->
+  </div>
+
+  <div class="hero">
+    <h1>Think you’re crypto-ready? Let’s find out—before the scammers do!</h1>
+    <p class="disclaimer"></p> <!-- Dynamic warning -->
+    <p class="disclaimer"></p> <!-- Dynamic encouragement -->
+    <button class="start-quiz-btn">Start the Quiz!</button>
+  </div>
+
+  <!-- Hidden Quiz Container -->
+  <div class="quiz-container"></div>
+
+  <div class="callouts">
+    <p class="disclaimer"></p> <!-- Dynamic warning -->
+    <p class="disclaimer"></p> <!-- Dynamic encouragement -->
+  </div>
+
+  <div class="footer">
+    <p><a href="#" class="share-quiz-link"></a></p> <!-- Dynamic share text -->
+    <p></p> <!-- Dynamic footer text -->
+  </div>
+
+  <!-- GSAP Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <!-- Custom JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>

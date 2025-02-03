@@ -1,0 +1,141 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(180deg, #f5f5f5, #e0e0e0);
+    margin: 0;
+    padding: 0;
+  }
+  
+  .header {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .logo {
+    width: 150px;
+  }
+  
+  .tagline {
+    font-size: 1.5rem;
+    color: #555;
+  }
+  
+  .hero {
+    text-align: center;
+    padding: 50px 20px;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    color: #222;
+  }
+  
+  .start-quiz-btn {
+    background-color: #ff8800;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .callouts {
+    margin-top: 20px;
+    text-align: center;
+    color: #666;
+  }
+  
+  .footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 0.9rem;
+    color: #888;
+  }
+  /* Button Hover Animation */
+.start-quiz-btn:hover {
+    box-shadow: 0px 0px 15px 5px #ff8800;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  /* Hero Section Refinement */
+  .hero {
+    background: linear-gradient(to bottom, #ffffff, #f5f5f5);
+    padding: 50px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Footer Link Enhancements */
+  .footer a {
+    color: #ff8800;
+    text-decoration: underline;
+  }
+  
+  .footer a:hover {
+    text-decoration: none;
+  }
+  
+  /* Typography Improvements */
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  h1, h2 {
+    font-weight: 700;
+  }
+  
+  p, a {
+    font-weight: 400;
+  }
+  
+  /* Background Accent */
+  body {
+    background-image: url('assets/background-pattern.png');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .logo {
+    max-width: 300px; /* Adjust to fit the page */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 auto; /* Center the logo */
+    display: block; /* Ensures proper alignment */
+  }
+  .quiz-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .calculation-screen .splash {
+    font-size: 3rem;
+    animation: splashAnimation 0.5s ease-in-out;
+  }
+  
+  .calculation-screen .calculating {
+    font-size: 1.5rem;
+    margin-top: 20px;
+  }
+  
+  @keyframes splashAnimation {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 0; }
+  }
+  .quiz-container {
+    display: none; /* Hide initially */
+    text-align: center;
+    padding: 20px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+  }
+  
+  .quiz-timer {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff8800;
+    margin-bottom: 20px;
+  }
+
