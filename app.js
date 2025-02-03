@@ -1,0 +1,199 @@
+// Ensure the DOM is fully loaded before executing
+document.addEventListener("DOMContentLoaded", () => {
+  loadPhrases(); // Load phrases dynamically
+});
+
+// Fade-in Logo Animation
+gsap.from(".logo", { duration: 1, y: -50, opacity: 0, ease: "bounce" });
+
+// Hover Effect for Quiz Button
+const quizButton = document.querySelector(".start-quiz-btn");
+quizButton.addEventListener("mouseenter", () => {
+  gsap.to(quizButton, { scale: 1.1, duration: 0.2 });
+});
+quizButton.addEventListener("mouseleave", () => {
+  gsap.to(quizButton, { scale: 1.0, duration: 0.2 });
+});
+
+// Create Bouncing Animation for Logo with Control
+const logoBounce = gsap.to(".logo", {
+  y: 10,
+  repeat: -1,
+  yoyo: true,
+  duration: 1,
+  ease: "power1.inOut",
+});
+
+// Start Quiz and Stop Bouncing Animation
+quizButton.addEventListener("click", () => {
+  gsap.to(".hero", { opacity: 0, duration: 0.5, onComplete: startQuiz });
+});
+
+function startQuiz() {
+  console.log("Starting the quiz...");
+
+  // Stop the logo bounce animation
+  logoBounce.pause();
+
+  // Hide the hero section and show the quiz container
+  document.querySelector('.hero').style.display = 'none';
+  const quizContainer = document.querySelector('.quiz-container');
+  quizContainer.style.display = 'block';
+
+  // Fetch questions from YAML and start the quiz
+  fetch('data/questions.yaml')
+    .then((response) => response.text())
+    .then((yamlText) => {
+      const questions = jsyaml.load(yamlText).questions;
+      startQuizWithQuestions(questions);
+    })
+    .catch((error) => {
+      console.error('Error loading questions:', error);
+      quizContainer.innerHTML = `
+        <div class="error">Oops! Something went wrong loading the quiz. Please try again later.</div>
+      `;
+    });
+}
+
+function startQuizWithQuestions(questions) {
+  let currentQuestion = 0;
+  let timer = 120; // 2 minutes in seconds
+  let score = 0; // Track total score
+
+  const quizContainer = document.querySelector('.quiz-container');
+  quizContainer.innerHTML = `
+    <div class="quiz-timer">Time Left: 2:00</div>
+    <div class="question-container"></div>
+  `;
+
+  // Start countdown
+  const timerInterval = setInterval(() => {
+    timer--;
+    const minutes = Math.floor(timer / 60);
+    const seconds = timer % 60;
+    document.querySelector('.quiz-timer').textContent = `Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+    if (timer <= 0) {
+      clearInterval(timerInterval);
+      endQuiz();
+    }
+  }, 1000);
+
+  renderQuestion(questions[currentQuestion]);
+
+  function renderQuestion(question) {
+    const questionContainer = document.querySelector('.question-container');
+    questionContainer.innerHTML = `
+      <div class="question">${question.text}</div>
+      <div class="options">
+        ${question.options
+          .map((option, index) => `<button class="option" data-index="${index}">${option}</button>`)
+          .join('')}
+      </div>
+    `;
+
+    // Attach event listeners to each option
+    document.querySelectorAll('.option').forEach((button) => {
+      button.addEventListener('click', (e) => {
+        const selectedIndex = parseInt(e.target.dataset.index);
+        if (selectedIndex === question.correct) {
+          score += question.weight; // Add weight if correct
+        }
+
+        currentQuestion++;
+        if (currentQuestion < questions.length) {
+          renderQuestion(questions[currentQuestion]);
+        } else {
+          clearInterval(timerInterval);
+          endQuiz();
+        }
+      });
+    });
+  }
+
+  function endQuiz() {
+    // Calculate total score and percentage
+    const maxScore = questions.reduce((sum, q) => sum + q.weight, 0);
+    const scorePercentage = Math.round((score / maxScore) * 100);
+
+    // Determine category based on score
+    let resultMessage = '';
+    if (scorePercentage >= 90) {
+      resultMessage = "Blockchain Genius";
+    } else if (scorePercentage >= 70) {
+      resultMessage = "Crypto Catastrophe Avoidance Expert";
+    } else if (scorePercentage >= 50) {
+      resultMessage = "Still Learning, But Safer";
+    } else {
+      resultMessage = "Future Rug Pull Enthusiast";
+    }
+
+    // Display results
+    quizContainer.innerHTML = `
+      <div class="final-results">
+        <h1>Your Results</h1>
+        <p>Total Score: ${score} / ${maxScore}</p>
+        <p>Percentage: ${scorePercentage}%</p>
+        <p>Category: <strong>${resultMessage}</strong></p>
+        <button class="restart-quiz">Restart Quiz</button>
+      </div>
+    `;
+
+    document.querySelector('.restart-quiz').addEventListener('click', () => {
+      location.reload(); // Restart the quiz
+    });
+  }
+}
+
+
+// Fade-in Animation for Sections
+gsap.from(".hero, .callouts, .footer", {
+  duration: 1.5,
+  opacity: 0,
+  y: 50,
+  stagger: 0.2,
+  ease: "power2.out",
+});
+
+// Smooth Scrolling for Internal Links
+document.querySelectorAll("a").forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute("href")).scrollIntoView({
+      behavior: "smooth",
+    });
+  });
+});
+
+function loadPhrases() {
+  // Fetch the YAML file
+  fetch('data/phrases.yaml')
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Failed to load phrases.yaml: ${response.statusText}`);
+      }
+      return response.text(); // Return the raw YAML text
+    })
+    .then((yamlText) => {
+      // Parse YAML content
+      const phrases = jsyaml.load(yamlText).phrases;
+
+      // Dynamically update content in the HTML
+      if (phrases) {
+        document.querySelector('.tagline').textContent = phrases.tagline || "Tagline not found!";
+        document.querySelectorAll('.disclaimer')[0].textContent = phrases.warning || "Warning not found!";
+        document.querySelectorAll('.disclaimer')[1].textContent = phrases.encouragement || "Encouragement not found!";
+        document.querySelector('.share-quiz-link').textContent = phrases.share || "Share link not found!";
+        document.querySelector('.footer').lastElementChild.textContent = phrases.footer || "Footer not found!";
+      } else {
+        console.error("Phrases object is empty or undefined.");
+      }
+    })
+    .catch((error) => {
+      console.error('Error loading phrases:', error);
+      document.querySelector('.quiz-container').innerHTML = `
+        <div class="error">Oops! Something went wrong loading the phrases. Please try again later.</div>
+      `;
+    });
+}
+

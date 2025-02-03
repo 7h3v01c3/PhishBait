@@ -1,0 +1,107 @@
+questions:
+  - text: "What does HODL stand for?"
+    options:
+      - "Hold On for Dear Life"
+      - "Hoard On, Don't Lose"
+      - "Help Out Disloyal Losers"
+      - "Hot On Digital Loot"
+    correct: 0
+    weight: 1
+
+  - text: "What should you do before connecting a wallet to a website?"
+    options:
+      - "Check the website’s authenticity."
+      - "Send all your funds first."
+      - "Nothing—it’s always safe!"
+      - "Ask your neighbor for advice."
+    correct: 0
+    weight: 2
+
+  - text: "You get a private DM on Discord from 'Official Support' asking for your seed phrase. What do you do?"
+    options:
+      - "Share the phrase because they seem trustworthy."
+      - "Ignore and block them immediately."
+      - "Ask them if they also need your PIN."
+      - "Report them to the server admin and wait for a reward."
+    correct: 1
+    weight: 1
+
+  - text: "An email offers 'guaranteed profits' if you sign up. What should you do?"
+    options:
+      - "Sign up immediately—you’re ready for easy money."
+      - "Check if they’ll guarantee your losses too."
+      - "Mark it as spam and delete it."
+      - "Forward it to Elon Musk for verification."
+    correct: 2
+    weight: 1
+  - text: "You get a private DM on Discord from 'Official Support' asking for your seed phrase. What do you do?"
+    options:
+      - "Share the phrase because they seem trustworthy."
+      - "Ignore and block them immediately."
+      - "Ask them if they also need your PIN."
+      - "Report them to the server admin and wait for a reward."
+    correct: 1
+    weight: 1
+
+  - text: "How can you verify if a Discord support channel is legitimate?"
+    options:
+      - "Look for admin announcements in the public server."
+      - "Use the private DM sent by 'support'."
+      - "Check if the channel has a custom emoji as proof."
+      - "Join a voice channel and demand answers."
+    correct: 0
+    weight: 2
+
+  - text: "You get invited to a 'secure' Discord server offering free tokens. What’s next?"
+    options:
+      - "Join quickly before you miss out."
+      - "Verify the legitimacy through server admins."
+      - "Ask them if they accept Monopoly money instead."
+      - "Ignore and report the invitation as spam."
+    correct: 3
+    weight: 2
+
+  - text: "What’s the easiest way to spot a scam on Discord?"
+    options:
+      - "The person DMing you offers free crypto."
+      - "The server name is 'TotallyNotAScam' or similar."
+      - "You’re asked to connect your wallet to claim rewards."
+      - "All of the above."
+    correct: 3
+    weight: 3
+
+  - text: "A Telegram user messages you about a special airdrop. What do you do?"
+    options:
+      - "Click the link to claim your airdrop."
+      - "Ask them for proof of their identity."
+      - "Ignore and block them immediately."
+      - "Send them your own link to Rick Astley’s 'Never Gonna Give You Up'."
+    correct: 2
+    weight: 1
+
+  - text: "What’s a major red flag when chatting in Telegram?"
+    options:
+      - "A 'support agent' asks you to confirm your private key."
+      - "The admin of the group asks everyone to send funds to verify their wallet."
+      - "A new user offers to help you privately."
+      - "All of the above."
+    correct: 3
+    weight: 3
+
+  - text: "You’re added to a Telegram group for a 'secret token presale.' What do you do?"
+    options:
+      - "Join the presale immediately—you don’t want to miss out!"
+      - "Ask for the token contract address and verify it yourself."
+      - "Send them 1 BTC to see if they’re legit."
+      - "Report the group and leave immediately."
+    correct: 1
+    weight: 2
+
+  - text: "A Telegram group admin DMs you asking for wallet details to 'verify' you. What’s your response?"
+    options:
+      - "Immediately send them the requested details."
+      - "Ignore and block the admin."
+      - "Ask if they’re hiring, since you’d also like to scam people."
+      - "Reply: 'Verify this!' and send them a meme."
+    correct: 1
+    weight: 2
