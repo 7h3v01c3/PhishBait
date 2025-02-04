@@ -1,107 +1,90 @@
 questions:
-  - text: "What does HODL stand for?"
+  - text: "You receive an unsolicited direct message on Twitter from someone claiming to be official crypto support, asking for your wallet's seed phrase to resolve an issue. What should you do?"
     options:
-      - "Hold On for Dear Life"
-      - "Hoard On, Don't Lose"
-      - "Help Out Disloyal Losers"
-      - "Hot On Digital Loot"
-    correct: 0
-    weight: 1
-
-  - text: "What should you do before connecting a wallet to a website?"
-    options:
-      - "Check the website’s authenticity."
-      - "Send all your funds first."
-      - "Nothing—it’s always safe!"
-      - "Ask your neighbor for advice."
-    correct: 0
-    weight: 2
-
-  - text: "You get a private DM on Discord from 'Official Support' asking for your seed phrase. What do you do?"
-    options:
-      - "Share the phrase because they seem trustworthy."
-      - "Ignore and block them immediately."
-      - "Ask them if they also need your PIN."
-      - "Report them to the server admin and wait for a reward."
+      - "Provide the seed phrase to quickly resolve the issue."
+      - "Ignore the message and report the account for phishing."
+      - "Ask them to verify their identity before proceeding."
+      - "Share your public wallet address instead."
     correct: 1
-    weight: 1
+    weight: 3
 
-  - text: "An email offers 'guaranteed profits' if you sign up. What should you do?"
+  - text: "An email from 'support@cryptosite.com' informs you of suspicious activity on your account and provides a link to reset your password. What is the safest course of action?"
     options:
-      - "Sign up immediately—you’re ready for easy money."
-      - "Check if they’ll guarantee your losses too."
-      - "Mark it as spam and delete it."
-      - "Forward it to Elon Musk for verification."
+      - "Click the link and reset your password immediately."
+      - "Ignore the email; legitimate companies don't send such alerts."
+      - "Verify the email's authenticity by contacting support through official channels."
+      - "Forward the email to friends to warn them."
     correct: 2
-    weight: 1
-  - text: "You get a private DM on Discord from 'Official Support' asking for your seed phrase. What do you do?"
+    weight: 3
+
+  - text: "While browsing a crypto forum, a user offers free technical support and requests remote access to your computer to fix a wallet issue. How should you respond?"
     options:
-      - "Share the phrase because they seem trustworthy."
-      - "Ignore and block them immediately."
-      - "Ask them if they also need your PIN."
-      - "Report them to the server admin and wait for a reward."
+      - "Allow remote access to resolve the issue quickly."
+      - "Request their credentials before allowing access."
+      - "Politely decline and seek support from official sources."
+      - "Share your screen but avoid granting control."
+    correct: 2
+    weight: 2
+
+  - text: "A pop-up on a cryptocurrency website claims your wallet is compromised and prompts you to enter your private key to secure it. What should you do?"
+    options:
+      - "Enter your private key to secure your wallet."
+      - "Close the pop-up and run a security scan on your device."
+      - "Contact the website's support to confirm the message."
+      - "Disconnect from the internet immediately."
     correct: 1
-    weight: 1
+    weight: 3
 
-  - text: "How can you verify if a Discord support channel is legitimate?"
+  - text: "You receive a phone call from someone claiming to be from your crypto exchange's support team, asking for your account details to verify suspicious activity. How should you proceed?"
     options:
-      - "Look for admin announcements in the public server."
-      - "Use the private DM sent by 'support'."
-      - "Check if the channel has a custom emoji as proof."
-      - "Join a voice channel and demand answers."
-    correct: 0
+      - "Provide the requested details to secure your account."
+      - "Hang up and contact the exchange's support through official channels."
+      - "Ask for a callback number to verify their identity."
+      - "Engage in conversation to gather more information."
+    correct: 1
+    weight: 3
+
+  - text: "After posting about a wallet issue on social media, you receive a message from an individual offering help and asking for your wallet's recovery phrase. What is the appropriate response?"
+    options:
+      - "Share the recovery phrase since you initiated the discussion."
+      - "Ignore the message and report the user for phishing."
+      - "Ask them how they can assist before sharing any information."
+      - "Request proof of their affiliation with the wallet provider."
+    correct: 1
     weight: 2
 
-  - text: "You get invited to a 'secure' Discord server offering free tokens. What’s next?"
+  - text: "An official-looking website offers a tool to recover lost cryptocurrency and asks for your wallet credentials. What should you do?"
     options:
-      - "Join quickly before you miss out."
-      - "Verify the legitimacy through server admins."
-      - "Ask them if they accept Monopoly money instead."
-      - "Ignore and report the invitation as spam."
-    correct: 3
-    weight: 2
-
-  - text: "What’s the easiest way to spot a scam on Discord?"
-    options:
-      - "The person DMing you offers free crypto."
-      - "The server name is 'TotallyNotAScam' or similar."
-      - "You’re asked to connect your wallet to claim rewards."
-      - "All of the above."
+      - "Use the tool to attempt recovery."
+      - "Research the website and tool through official channels before proceeding."
+      - "Provide only partial credentials to see if it works."
+      - "Avoid such tools and seek assistance from official support."
     correct: 3
     weight: 3
 
-  - text: "A Telegram user messages you about a special airdrop. What do you do?"
+  - text: "You receive a direct message on Discord from a user with an 'Admin' tag offering to help with a recent transaction issue. They ask for your transaction ID and wallet address. How should you respond?"
     options:
-      - "Click the link to claim your airdrop."
-      - "Ask them for proof of their identity."
-      - "Ignore and block them immediately."
-      - "Send them your own link to Rick Astley’s 'Never Gonna Give You Up'."
+      - "Share the requested information to get assistance."
+      - "Verify their admin status before sharing any information."
+      - "Report the message to Discord and ignore the user."
+      - "Ask them to provide proof of their identity."
     correct: 2
-    weight: 1
+    weight: 2
 
-  - text: "What’s a major red flag when chatting in Telegram?"
+  - text: "An email claims you've won a cryptocurrency giveaway and asks you to click a link to claim your prize. What is the safest action?"
     options:
-      - "A 'support agent' asks you to confirm your private key."
-      - "The admin of the group asks everyone to send funds to verify their wallet."
-      - "A new user offers to help you privately."
-      - "All of the above."
-    correct: 3
+      - "Click the link to claim your prize."
+      - "Delete the email; it's likely a phishing attempt."
+      - "Forward the email to your contacts to inform them."
+      - "Reply to the email asking for more details."
+    correct: 1
     weight: 3
 
-  - text: "You’re added to a Telegram group for a 'secret token presale.' What do you do?"
+  - text: "A website offers a free security audit of your crypto wallet and requests your private key to perform the audit. How should you proceed?"
     options:
-      - "Join the presale immediately—you don’t want to miss out!"
-      - "Ask for the token contract address and verify it yourself."
-      - "Send them 1 BTC to see if they’re legit."
-      - "Report the group and leave immediately."
-    correct: 1
-    weight: 2
-
-  - text: "A Telegram group admin DMs you asking for wallet details to 'verify' you. What’s your response?"
-    options:
-      - "Immediately send them the requested details."
-      - "Ignore and block the admin."
-      - "Ask if they’re hiring, since you’d also like to scam people."
-      - "Reply: 'Verify this!' and send them a meme."
-    correct: 1
-    weight: 2
+      - "Provide the private key for the audit."
+      - "Research the service and read reviews before deciding."
+      - "Decline the offer and consult with your wallet provider."
+      - "Ask if they can perform the audit without the private key."
+    correct: 2
+    weight: 3
