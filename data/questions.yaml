@@ -124,3 +124,39 @@ questions:
       - "Search Telegram for similar usernames and pick the one with the longest history."
     correct: 2
     weight: 2
+
+  - text: "You land on a site called 'Dapp Mainnet Support' that offers to fix wallet issues like 'Migrate', 'Rectification', and 'Fix Bugs'. Every path leads to a screen asking you to enter your 12 or 24-word seed phrase to continue. What should you do?"
+    options:
+      - "Enter your seed phrase so the tool can complete the troubleshooting."
+      - "Close the site immediately; never enter your seed phrase on any website pretending to be a support dApp."
+      - "Try a different option like 'Claim Airdrop' instead of 'Fix Bugs'."
+      - "Refresh the page and try again until it connects automatically."
+    correct: 1
+    weight: 3
+
+  - text: "A 'Web3 Support Center' page says: 'Automatic wallet connection failed. Please use manual connection method' and offers 'Connect via Secret Recovery Phrase / Private Key / Keystore JSON'. What is the safest action?"
+    options:
+      - "Use the manual connection option with your seed phrase so support can verify ownership."
+      - "Use the keystore JSON option since it is more secure than the seed phrase."
+      - "Leave the site; only enter your seed phrase/private key inside your actual wallet app or hardware device, never on random web pages."
+      - "Paste a different wallet's seed phrase to test the site."
+    correct: 2
+    weight: 3
+
+  - text: "A troubleshooting page says: 'To fix wallet errors and recover stuck funds, enter the same 12/24-word phrase you used when creating your wallet. We do not store or share your recovery phrase.' How should you respond?"
+    options:
+      - "Enter your recovery phrase because they say they don't store it."
+      - "Enter only 3–4 words first to see if the page is legit."
+      - "Refuse to enter the phrase, close the page, and check your wallet directly through the official app or extension."
+      - "Email your recovery phrase to support instead so it is not entered on the site."
+    correct: 2
+    weight: 3
+
+  - text: "A site claiming to 'recover stuck funds' shows a form with fields labeled 'Word 1, Word 2, Word 3…' under the heading 'Verify Wallet Ownership'. What is the correct security mindset here?"
+    options:
+      - "This is normal for advanced support; enter your words carefully so they match."
+      - "Type the words but scramble the order slightly for safety."
+      - "Understand that any page asking for all your seed words is a scam, regardless of branding; never fill this form."
+      - "Only fill it out if you opened the site from a link in a Discord or Telegram support DM."
+    correct: 2
+    weight: 3
