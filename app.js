@@ -57,12 +57,12 @@ function startQuiz() {
 
 function startQuizWithQuestions(questions) {
   let currentQuestion = 0;
-  let timer = 180; // 2 minutes in seconds
+  let timer = 180; // 3 minutes in seconds
   let score = 0; // Track total score
 
   const quizContainer = document.querySelector('.quiz-container');
   quizContainer.innerHTML = `
-    <div class="quiz-timer">Time Left: 2:00</div>
+    <div class="quiz-timer">Time Left: 3:00</div>
     <div class="question-container"></div>
   `;
 
