@@ -74,6 +74,22 @@ function startQuizWithQuestions(questions) {
     quizQuestions = quizQuestions.slice(0, MAX_QUESTIONS);
   }
 
+  // For each question, randomize the order of the options safely
+  quizQuestions = quizQuestions.map((q) => {
+    const optionObjects = q.options.map((text, index) => ({
+      text,
+      isCorrect: index === q.correct,
+    }));
+
+    const shuffledOptions = shuffleArray(optionObjects);
+
+    return {
+      ...q,
+      options: shuffledOptions.map((o) => o.text),
+      correct: shuffledOptions.findIndex((o) => o.isCorrect),
+    };
+  });
+
   let currentQuestion = 0;
   let timer = 300; // 5 minutes in seconds
   let score = 0; // Track total score
