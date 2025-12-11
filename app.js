@@ -1,6 +1,7 @@
 // Ensure the DOM is fully loaded before executing
 document.addEventListener("DOMContentLoaded", () => {
-  loadPhrases(); // Load phrases dynamically
+  loadGeneralText(); // Load general site text
+  loadTimerText();   // Load timer-related copy
 });
 
 // Fade-in Logo Animation
@@ -68,6 +69,9 @@ function shuffleArray(array) {
 
 function startQuizWithQuestions(questions) {
   const MAX_QUESTIONS = 20;
+  const LOW_TIME_THRESHOLD = 30; // seconds remaining when we start nudging
+  const EXTRA_SECONDS = 60; // 1 extra minute
+  const GRACE_SECONDS = 20; // final grace countdown before auto-finish
 
   // Always randomize order; if there are more than MAX_QUESTIONS, pick a random subset
   let quizQuestions = shuffleArray(questions);
@@ -92,25 +96,89 @@ function startQuizWithQuestions(questions) {
   });
 
   let currentQuestion = 0;
-  let timer = 300; // 5 minutes in seconds
+  //let timer = 300; // 5 minutes in seconds
+  let timer = 20; // 5 minutes in seconds
   let score = 0; // Track total score
+  let inGracePeriod = false;
 
   const quizContainer = document.querySelector('.quiz-container');
   quizContainer.innerHTML = `
-    <div class="quiz-timer">Time Left: 5:00</div>
+    <div class="timer-area">
+      <div class="quiz-timer">Time Left: 5:00</div>
+      <div class="extra-time-container" style="display:none;">
+        <span class="extra-time-text"></span>
+        <button class="extra-time-btn">+1 minute</button>
+      </div>
+      <div class="grace-message"></div>
+    </div>
     <div class="question-container"></div>
   `;
+
+  const quizTimerEl = document.querySelector('.quiz-timer');
+  const extraTimeContainer = document.querySelector('.extra-time-container');
+  const extraTimeTextEl = document.querySelector('.extra-time-text');
+  const extraTimeBtn = document.querySelector('.extra-time-btn');
+  const graceMessageEl = document.querySelector('.grace-message');
+
+  // If timer text is loaded, set the low-time hint text from timer.yaml; otherwise use fallback
+  const timerData = window.phishbaitTimer;
+  if (timerData?.low_hints && timerData.low_hints.length > 0) {
+    const hints = timerData.low_hints;
+    extraTimeTextEl.textContent = hints[Math.floor(Math.random() * hints.length)];
+  } else {
+    extraTimeTextEl.textContent = "Running low on time? You get one mercy minute.";
+  }
+
+  // Extra time button behavior
+  extraTimeBtn.addEventListener('click', () => {
+    timer += EXTRA_SECONDS;
+    extraTimeContainer.style.display = 'none';
+    // Light-hearted nudge to keep going
+    let bonusMsg = "Bonus minute activated. Real scammers aren't this kind.";
+    if (timerData?.bonus_messages && timerData.bonus_messages.length > 0) {
+      const msgs = timerData.bonus_messages;
+      bonusMsg = msgs[Math.floor(Math.random() * msgs.length)];
+    }
+    graceMessageEl.textContent = bonusMsg;
+    // Auto-clear this bonus message after a few seconds (unless we're in final grace)
+    setTimeout(() => {
+      if (!inGracePeriod) {
+        graceMessageEl.textContent = "";
+      }
+    }, 4000);
+  });
 
   // Start countdown
   const timerInterval = setInterval(() => {
     timer--;
+    if (timer < 0) timer = 0;
+
     const minutes = Math.floor(timer / 60);
     const seconds = timer % 60;
-    document.querySelector('.quiz-timer').textContent = `Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    quizTimerEl.textContent = `Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
+    // When time is running low and we're not in the final grace period, offer more time
+    if (!inGracePeriod && timer > 0 && timer <= LOW_TIME_THRESHOLD) {
+      extraTimeContainer.style.display = 'flex';
+    }
+
+    // Handle main timer hitting zero
     if (timer <= 0) {
-      clearInterval(timerInterval);
-      endQuiz();
+      if (!inGracePeriod) {
+        // Switch to a short grace period instead of ending immediately
+        inGracePeriod = true;
+        timer = GRACE_SECONDS;
+        extraTimeContainer.style.display = 'none';
+        let graceMsg = "Time's basically up. We'll score this in 20 seconds—no pressure, just do your best click-panic.";
+        if (timerData?.grace_messages && timerData.grace_messages.length > 0) {
+          const msgs = timerData.grace_messages;
+          graceMsg = msgs[Math.floor(Math.random() * msgs.length)];
+        }
+        graceMessageEl.textContent = graceMsg;
+      } else {
+        clearInterval(timerInterval);
+        endQuiz();
+      }
     }
   }, 1000);
 
@@ -240,9 +308,9 @@ document.querySelectorAll("a[href^='#']").forEach((anchor) => {
   });
 });
 
-function loadPhrases() {
-  // Fetch the YAML file
-  fetch('data/phrases.yaml')
+function loadGeneralText() {
+  // Fetch the general UI text YAML
+  fetch('data/general_text.yaml')
     .then((response) => {
       if (!response.ok) {
         throw new Error(`Failed to load phrases.yaml: ${response.statusText}`);
@@ -251,14 +319,16 @@ function loadPhrases() {
     })
     .then((yamlText) => {
       // Parse YAML content
-      const phrases = jsyaml.load(yamlText).phrases;
+      const generalText = jsyaml.load(yamlText).general_text;
+      // Expose text globally for other features if needed
+      window.phishbaitText = generalText;
 
       // Dynamically update content in the HTML
-      if (phrases) {
-        document.querySelector('.tagline').textContent = phrases.tagline || "Tagline not found!";
-        document.querySelectorAll('.disclaimer')[0].textContent = phrases.warning || "Warning not found!";
-        document.querySelectorAll('.disclaimer')[1].textContent = phrases.encouragement || "Encouragement not found!";
-        document.querySelector('.share-quiz-link').textContent = phrases.share || "Share link not found!";
+      if (generalText) {
+        document.querySelector('.tagline').textContent = generalText.tagline || "Tagline not found!";
+        document.querySelectorAll('.disclaimer')[0].textContent = generalText.warning || "Warning not found!";
+        document.querySelectorAll('.disclaimer')[1].textContent = generalText.encouragement || "Encouragement not found!";
+        document.querySelector('.share-quiz-link').textContent = generalText.share || "Share link not found!";
       } else {
         console.error("Phrases object is empty or undefined.");
       }
@@ -270,4 +340,24 @@ function loadPhrases() {
       `;
     });
 }
+
+function loadTimerText() {
+  // Fetch the timer-specific text YAML
+  fetch('data/timer.yaml')
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Failed to load timer.yaml: ${response.statusText}`);
+      }
+      return response.text();
+    })
+    .then((yamlText) => {
+      const timerData = jsyaml.load(yamlText).timer;
+      window.phishbaitTimer = timerData;
+    })
+    .catch((error) => {
+      console.error('Error loading timer text:', error);
+      // We fall back to hard-coded strings in startQuizWithQuestions if this fails
+    });
+}
+
 
