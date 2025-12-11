@@ -179,7 +179,7 @@ questions:
     correct: 1
     weight: 3
 
-- text: "A social media account with a verification badge shares some decent educational content, but frequently mixes it with posts like 'Buy this token before it explodes!' and 'Join my paid group now!' What's the most accurate interpretation?"
+  - text: "A social media account with a verification badge shares some decent educational content, but frequently mixes it with posts like 'Buy this token before it explodes!' and 'Join my paid group now!' What's the most accurate interpretation?"
     options:
       - "The influencer is just passionate about helping people invest."
       - "This account is likely running a monetized shill strategy, not offering neutral or reliable education."
@@ -188,7 +188,7 @@ questions:
     correct: 1
     weight: 3
 
-- text: "Someone on WhatsApp claims to be a famous crypto educator and invites you to a 'private investment group' with guaranteed returns. You've seen that real educators say they never DM about investments. What should you do?"
+  - text: "Someone on WhatsApp claims to be a famous crypto educator and invites you to a 'private investment group' with guaranteed returns. You've seen that real educators say they never DM about investments. What should you do?"
     options:
       - "Ask them to prove their identity before deciding."
       - "Politely decline, block/report the account, and treat it as a guaranteed scam."
@@ -197,7 +197,7 @@ questions:
     correct: 1
     weight: 3
 
-- text: "Which of the following is a strong indicator that an influencer is primarily a financial manipulator rather than a genuine educator?"
+  - text: "Which of the following is a strong indicator that an influencer is primarily a financial manipulator rather than a genuine educator?"
     options:
       - "They post about crypto and use common hashtags like #bitcoin and #crypto."
       - "They mix surface‑level 'education' with emotional politics, fear ('they're against us'), and constant pitches to invest in their tokens, courses, or paid groups."
@@ -206,7 +206,7 @@ questions:
     correct: 1
     weight: 3
 
-- text: "An account claims they are hiring for the 'official team' of a well-known crypto educator and asks you to send your resume and details via Telegram. The educator has publicly said they don't recruit or hire through DMs. What is the correct response?"
+  - text: "An account claims they are hiring for the 'official team' of a well-known crypto educator and asks you to send your resume and details via Telegram. The educator has publicly said they don't recruit or hire through DMs. What is the correct response?"
     options:
       - "Reply to verify if the offer is real."
       - "Send the resume, but be cautious."
