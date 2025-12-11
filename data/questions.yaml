@@ -8,12 +8,12 @@ questions:
     correct: 1
     weight: 3
 
-  - text: "You see a reply on X (Twitter) from @BinanceSupport_Help offering to fix your issue if you DM them your seed phrase. How do you safely confirm if this is the real support account?"
+  - text: "You see a reply on X (Twitter) from an account named @BinanceSupport_Help offering you support. What is the safest response?"
     options:
-      - "Click their profile and trust it if they have a support-sounding @username."
-      - "Check the project's official website/app for links to their real X account and use only that handle."
-      - "Ask the account to send you a selfie holding their ID."
-      - "Search X for more accounts with similar names and pick the one with the most followers."
+      - "DM them your Photo ID after checking their profile and bio."
+      - "Ignore the reply, report the account for impersonation/scam, never share your seed phrase, and if you still need help, go to the exchange’s official website/app to open a support ticket or use the handle linked there."
+      - "Ask them to send a selfie with their ID to prove they are real support."
+      - "Follow the account first; if they follow you back, they are likely legit."
     correct: 1
     weight: 3
 
@@ -21,7 +21,7 @@ questions:
     options:
       - "Click the link in the email and reset your password immediately."
       - "Ignore the email; all such alerts are scams."
-      - "Open a new browser tab, go directly to the official site or app, and contact support there."
+      - "Open a new browser tab, manually go to the exchange’s official website or app (without using the email link), and check your account or contact support from there."
       - "Forward the email to friends so they can be aware."
     correct: 2
     weight: 3
