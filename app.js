@@ -226,13 +226,17 @@ gsap.from(".hero, .callouts, .footer", {
   ease: "power2.out",
 });
 
-// Smooth Scrolling for Internal Links
-document.querySelectorAll("a").forEach((anchor) => {
+// Smooth Scrolling for Internal Links (only hrefs that start with '#')
+document.querySelectorAll("a[href^='#']").forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute("href")).scrollIntoView({
-      behavior: "smooth",
-    });
+    const targetSelector = this.getAttribute("href");
+    const targetEl = document.querySelector(targetSelector);
+    if (targetEl) {
+      e.preventDefault();
+      targetEl.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
   });
 });
 
