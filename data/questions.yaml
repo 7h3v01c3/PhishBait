@@ -171,55 +171,55 @@ questions:
     weight: 3
 
     - text: "You see a well-known influencer's name and photo being used to promote an 'exclusive crypto investment group' on Telegram, promising early access and huge returns. What is the safest assumption?"
-  options:
-    - "Join quickly before it's full — opportunities like this are rare."
-    - "Assume it's a scam; treat any 'exclusive investment group' solicitation as fraudulent, no matter whose name is on it."
-    - "Ask the group admin for proof it's the real influencer."
-    - "It might be real if others in the group are talking positively about it."
-  correct: 1
-  weight: 3
+    options:
+      - "Join quickly before it's full — opportunities like this are rare."
+      - "Assume it's a scam; treat any 'exclusive investment group' solicitation as fraudulent, no matter whose name is on it."
+      - "Ask the group admin for proof it's the real influencer."
+      - "It might be real if others in the group are talking positively about it."
+    correct: 1
+    weight: 3
 
 - text: "A social media account with a verification badge shares some decent educational content, but frequently mixes it with posts like 'Buy this token before it explodes!' and 'Join my paid group now!' What's the most accurate interpretation?"
-  options:
-    - "The influencer is just passionate about helping people invest."
-    - "This account is likely running a monetized shill strategy, not offering neutral or reliable education."
-    - "Verification badges mean they're trustworthy and aligned with your interests."
-    - "They’re just trying to make a living, so it's safe to follow their investment calls."
-  correct: 1
-  weight: 3
+    options:
+      - "The influencer is just passionate about helping people invest."
+      - "This account is likely running a monetized shill strategy, not offering neutral or reliable education."
+      - "Verification badges mean they're trustworthy and aligned with your interests."
+      - "They’re just trying to make a living, so it's safe to follow their investment calls."
+    correct: 1
+    weight: 3
 
 - text: "Someone on WhatsApp claims to be a famous crypto educator and invites you to a 'private investment group' with guaranteed returns. You've seen that real educators say they never DM about investments. What should you do?"
-  options:
-    - "Ask them to prove their identity before deciding."
-    - "Politely decline, block/report the account, and treat it as a guaranteed scam."
-    - "Join the group to see if it's real, then decide."
-    - "Request more details before making any judgment."
-  correct: 1
-  weight: 3
+    options:
+      - "Ask them to prove their identity before deciding."
+      - "Politely decline, block/report the account, and treat it as a guaranteed scam."
+      - "Join the group to see if it's real, then decide."
+      - "Request more details before making any judgment."
+    correct: 1
+    weight: 3
 
 - text: "Which of the following is a strong indicator that an influencer is primarily a financial manipulator rather than a genuine educator?"
-  options:
-    - "They post about crypto and use common hashtags like #bitcoin and #crypto."
-    - "They mix surface‑level 'education' with emotional politics, fear ('they're against us'), and constant pitches to invest in their tokens, courses, or paid groups."
-    - "They speak passionately about financial freedom and independence."
-    - "They occasionally host livestreams to answer questions."
-  correct: 1
-  weight: 3
+    options:
+      - "They post about crypto and use common hashtags like #bitcoin and #crypto."
+      - "They mix surface‑level 'education' with emotional politics, fear ('they're against us'), and constant pitches to invest in their tokens, courses, or paid groups."
+      - "They speak passionately about financial freedom and independence."
+      - "They occasionally host livestreams to answer questions."
+    correct: 1
+    weight: 3
 
 - text: "An account claims they are hiring for the 'official team' of a well-known crypto educator and asks you to send your resume and details via Telegram. The educator has publicly said they don't recruit or hire through DMs. What is the correct response?"
-  options:
-    - "Reply to verify if the offer is real."
-    - "Send the resume, but be cautious."
-    - "Ignore and report it, it's a scam."
-    - "Ask in a random group if anyone else got the same message."
-  correct: 2
-  weight: 3
+    options:
+      - "Reply to verify if the offer is real."
+      - "Send the resume, but be cautious."
+      - "Ignore and report it, it's a scam."
+      - "Ask in a random group if anyone else got the same message."
+    correct: 2
+    weight: 3
   
   - text: "On X (Twitter), you ask for help with your crypto exchange account. Someone replies 'check DMs' from a profile using the exchange’s logo and a username like 'Exchang_Officel_Support'. They say they need you to send funds to a new address to activate your account. What should you do?"
-  options:
-    - "Send funds to the new account to activate it and prove you’re the rightful owner."
-    - "This is a scam. Never send funds to random addresses claiming to be support."
-    - "Ask for a support ticket number and continue the conversation cautiously."
-    - "Since they have the exchange's logo, it's probably safe to trust."
-  correct: 1
-  weight: 3
+    options:
+      - "Send funds to the new account to activate it and prove you’re the rightful owner."
+      - "This is a scam. Never send funds to random addresses claiming to be support."
+      - "Ask for a support ticket number and continue the conversation cautiously."
+      - "Since they have the exchange's logo, it's probably safe to trust."
+    correct: 1
+    weight: 3
