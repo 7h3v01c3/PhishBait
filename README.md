@@ -1,5 +1,9 @@
 ## PhishBait Crypto Security Quiz
 
+<p align="center">
+  <img src="assets/logo.png" alt="PhishBait logo" width="300" />
+</p>
+
 Browser-based quiz to test (and humble) your crypto scam-awareness before real money is at risk.
 
 ### What this is
