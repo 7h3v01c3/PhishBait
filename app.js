@@ -32,8 +32,9 @@ quizButton.addEventListener("click", () => {
 function startQuiz() {
   console.log("Starting the quiz...");
 
-  // Stop the logo bounce animation
-  logoBounce.pause();
+  // Stop the logo bounce animation and reset logo position
+  logoBounce.kill();
+  gsap.set(".logo", { clearProps: "transform" });
 
   // Hide the hero section and show the quiz container
   document.querySelector('.hero').style.display = 'none';
