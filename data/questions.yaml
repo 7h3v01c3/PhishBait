@@ -170,7 +170,7 @@ questions:
     correct: 1
     weight: 3
 
-    - text: "You see a well-known influencer's name and photo being used to promote an 'exclusive crypto investment group' on Telegram, promising early access and huge returns. What is the safest assumption?"
+  - text: "You see a well-known influencer's name and photo being used to promote an 'exclusive crypto investment group' on Telegram, promising early access and huge returns. What is the safest assumption?"
     options:
       - "Join quickly before it's full — opportunities like this are rare."
       - "Assume it's a scam; treat any 'exclusive investment group' solicitation as fraudulent, no matter whose name is on it."
