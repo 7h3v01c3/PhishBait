@@ -329,6 +329,10 @@ function loadGeneralText() {
         document.querySelectorAll('.disclaimer')[0].textContent = generalText.warning || "Warning not found!";
         document.querySelectorAll('.disclaimer')[1].textContent = generalText.encouragement || "Encouragement not found!";
         document.querySelector('.share-quiz-link').textContent = generalText.share || "Share link not found!";
+        const versionEl = document.querySelector('.app-version');
+        if (versionEl && generalText.version) {
+          versionEl.textContent = `Version ${generalText.version}`;
+        }
       } else {
         console.error("Phrases object is empty or undefined.");
       }
