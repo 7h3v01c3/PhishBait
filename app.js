@@ -259,7 +259,6 @@ function loadPhrases() {
         document.querySelectorAll('.disclaimer')[0].textContent = phrases.warning || "Warning not found!";
         document.querySelectorAll('.disclaimer')[1].textContent = phrases.encouragement || "Encouragement not found!";
         document.querySelector('.share-quiz-link').textContent = phrases.share || "Share link not found!";
-        document.querySelector('.footer-main').textContent = phrases.footer || "Footer not found!";
       } else {
         console.error("Phrases object is empty or undefined.");
       }
