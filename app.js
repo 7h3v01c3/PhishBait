@@ -96,8 +96,8 @@ function startQuizWithQuestions(questions) {
   });
 
   let currentQuestion = 0;
-  //let timer = 300; // 5 minutes in seconds
-  let timer = 20; // 5 minutes in seconds
+  let timer = 300; // 5 minutes in seconds
+  // let timer = 20; // testing purposes
   let score = 0; // Track total score
   let inGracePeriod = false;
 
