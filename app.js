@@ -55,14 +55,32 @@ function startQuiz() {
     });
 }
 
+// Utility: shuffle an array (Fisher–Yates)
+function shuffleArray(array) {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 function startQuizWithQuestions(questions) {
+  const MAX_QUESTIONS = 20;
+
+  // Always randomize order; if there are more than MAX_QUESTIONS, pick a random subset
+  let quizQuestions = shuffleArray(questions);
+  if (quizQuestions.length > MAX_QUESTIONS) {
+    quizQuestions = quizQuestions.slice(0, MAX_QUESTIONS);
+  }
+
   let currentQuestion = 0;
-  let timer = 180; // 3 minutes in seconds
+  let timer = 300; // 5 minutes in seconds
   let score = 0; // Track total score
 
   const quizContainer = document.querySelector('.quiz-container');
   quizContainer.innerHTML = `
-    <div class="quiz-timer">Time Left: 3:00</div>
+    <div class="quiz-timer">Time Left: 5:00</div>
     <div class="question-container"></div>
   `;
 
@@ -79,7 +97,7 @@ function startQuizWithQuestions(questions) {
     }
   }, 1000);
 
-  renderQuestion(questions[currentQuestion]);
+  renderQuestion(quizQuestions[currentQuestion]);
 
   function renderQuestion(question) {
     const questionContainer = document.querySelector('.question-container');
@@ -132,8 +150,8 @@ function startQuizWithQuestions(questions) {
     // Wait before moving to next question
     setTimeout(() => {
         currentQuestion++;
-        if (currentQuestion < questions.length) {
-            renderQuestion(questions[currentQuestion]);
+        if (currentQuestion < quizQuestions.length) {
+            renderQuestion(quizQuestions[currentQuestion]);
         } else {
             clearInterval(timerInterval);
             endQuiz();
@@ -143,7 +161,7 @@ function startQuizWithQuestions(questions) {
 
   function endQuiz() {
     // Calculate total score and percentage
-    const maxScore = questions.reduce((sum, q) => sum + q.weight, 0);
+    const maxScore = quizQuestions.reduce((sum, q) => sum + q.weight, 0);
     const scorePercentage = Math.round((score / maxScore) * 100);
 
     // Determine category based on score
@@ -176,7 +194,7 @@ function startQuizWithQuestions(questions) {
 
   function updateProgress() {
     const progressBar = document.querySelector('.progress-bar');
-    const progress = (currentQuestion / questions.length) * 100;
+    const progress = (currentQuestion / quizQuestions.length) * 100;
     progressBar.style.width = `${progress}%`;
   }
 }
