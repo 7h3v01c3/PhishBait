@@ -102,3 +102,11 @@ This project is not about flexing how “early” or “smart” anyone is. It�
 If this quiz makes someone pause before trusting a random “support” DM or typing their seed words into a website, it’s doing its job.
 
 
+### License
+
+- **Code (HTML/CSS/JS):** MIT License — see `LICENSE`.
+- **Question content (`data/questions.yaml` and related text):** CC BY 4.0 — see `CONTENT-LICENSE`.
+
+You’re welcome to use and adapt both. If you reuse the questions or wording, please credit **PhishBait.xyz** and link back to this repo.
+
+
