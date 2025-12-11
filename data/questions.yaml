@@ -160,3 +160,12 @@ questions:
       - "Only fill it out if you opened the site from a link in a Discord or Telegram support DM."
     correct: 2
     weight: 3
+
+  - text: "On Telegram, a 'support' contact tells you they have 'conducted a diagnostic assessment' on your screenshot and says your wallet has an 'internal UI bug issue' that requires a special validation process to rectify, then offers a link. What is the safest response?"
+    options:
+      - "Follow their validation link and complete whatever steps they send, since they identified the bug."
+      - "Stop engaging, report/block the account, and only follow instructions from official docs or support pages you open yourself (not links from DMs)."
+      - "Ask them to start a video call and share their screen while they guide you through the validation."
+      - "Give them your seed words so they can run the validation process for you."
+    correct: 1
+    weight: 3
