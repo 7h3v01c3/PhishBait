@@ -191,30 +191,94 @@ body {
     100% { transform: scale(1); }
   }
 
-  .option {
-    margin: 10px;
-    padding: 10px 20px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
+  /* Answer UI (radio-style) */
+  .answer-list {
+    display: grid;
+    gap: 12px;
+    margin-top: 16px;
+    width: 100%;
+  }
+
+  .answer-option {
+    --answer-border: #ddd;
+    --answer-bg: #fff;
+    --answer-text: #222;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    /* Right padding slightly larger to balance the left "radio + gap" visual weight */
+    padding: 12px 24px 12px 14px;
+    border: 2px solid var(--answer-border);
+    border-radius: 8px;
+    background: var(--answer-bg);
+    color: var(--answer-text);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
+    -webkit-user-select: none;
+    user-select: none;
   }
 
-  .option.correct {
-    background-color: #4CAF50;
-    color: white;
-    border-color: #45a049;
+  .answer-option:hover {
+    border-color: #ff8800;
+    box-shadow: 0px 0px 10px 2px rgba(255, 136, 0, 0.25);
   }
 
-  .option.incorrect {
-    background-color: #f44336;
-    color: white;
-    border-color: #da190b;
+  .answer-option:focus-within {
+    outline: 3px solid rgba(255, 136, 0, 0.45);
+    outline-offset: 2px;
   }
 
-  .option:disabled {
-    cursor: not-allowed;
-    opacity: 0.7;
+  .answer-radio {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .answer-control {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #bbb;
+    display: inline-block;
+    flex: 0 0 auto;
+  }
+
+  .answer-radio:checked + .answer-control {
+    border-color: #ff8800;
+    box-shadow: inset 0 0 0 5px #ff8800;
+  }
+
+  .answer-text {
+    flex: 1 1 auto;
+    line-height: 1.25;
+  }
+
+  /* Selected state (subtle) */
+  .answer-option--selected {
+    border-color: #ff8800;
+  }
+
+  /* Correct/Incorrect feedback */
+  .answer-option--correct {
+    --answer-border: #45a049;
+    --answer-bg: #e8f5e9;
+    --answer-text: #1b5e20;
+  }
+
+  .answer-option--incorrect {
+    --answer-border: #da190b;
+    --answer-bg: #ffebee;
+    --answer-text: #b71c1c;
+  }
+
+  /* Disabled look after selection */
+  .answer-radio:disabled ~ .answer-text,
+  .answer-radio:disabled + .answer-control {
+    opacity: 0.95;
   }
 
   .progress-container {

@@ -195,11 +195,19 @@ function startQuizWithQuestions(questions) {
             // Update question content
             questionContainer.innerHTML = `
                 <div class="question">${question.text}</div>
-                <div class="options">
-                    ${question.options
-                        .map((option, index) => `<button class="option" data-index="${index}">${option}</button>`)
-                        .join('')}
-                </div>
+                <form class="answer-list" role="radiogroup" aria-label="Answer choices">
+                  ${question.options
+                    .map(
+                      (option, index) => `
+                        <label class="answer-option" data-index="${index}">
+                          <input class="answer-radio" type="radio" name="answer" value="${index}" />
+                          <span class="answer-control" aria-hidden="true"></span>
+                          <span class="answer-text">${option}</span>
+                        </label>
+                      `
+                    )
+                    .join('')}
+                </form>
             `;
             
             // Fade in new question
@@ -208,29 +216,39 @@ function startQuizWithQuestions(questions) {
                 duration: 0.3
             });
             
-            // Attach event listeners to options
-            document.querySelectorAll('.option').forEach((button) => {
-              button.addEventListener('click', (e) => {
-                const selectedIndex = parseInt(e.target.dataset.index);
-                if (selectedIndex === question.correct) {
+            // Attach event listeners to radio answers
+            document.querySelectorAll('.answer-radio').forEach((radio) => {
+              radio.addEventListener('change', (e) => {
+                const selectedIndex = parseInt(e.target.value, 10);
+                const isCorrect = selectedIndex === question.correct;
+                if (isCorrect) {
                   score += question.weight; // Add weight if correct
                 }
 
-                handleAnswer(button, selectedIndex === question.correct);
+                const selectedLabel = e.target.closest('.answer-option');
+                handleAnswer(selectedLabel, isCorrect, question.correct);
               });
             });
         }
     });
   }
 
-  function handleAnswer(button, isCorrect) {
-    // Disable all buttons
-    document.querySelectorAll('.option').forEach(btn => {
-        btn.disabled = true;
+  function handleAnswer(selectedLabel, isCorrect, correctIndex) {
+    // Disable all inputs
+    document.querySelectorAll('.answer-radio').forEach((input) => {
+      input.disabled = true;
     });
-    
-    // Add visual feedback
-    button.classList.add(isCorrect ? 'correct' : 'incorrect');
+
+    // Mark selected + correct for feedback (so users learn even when wrong)
+    if (selectedLabel) {
+      selectedLabel.classList.add(isCorrect ? 'answer-option--correct' : 'answer-option--incorrect');
+      selectedLabel.classList.add('answer-option--selected');
+    }
+
+    const correctLabel = document.querySelector(`.answer-option[data-index="${correctIndex}"]`);
+    if (correctLabel) {
+      correctLabel.classList.add('answer-option--correct');
+    }
     
     // Wait before moving to next question
     setTimeout(() => {
