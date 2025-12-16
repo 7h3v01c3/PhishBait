@@ -2,6 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   loadGeneralText(); // Load general site text
   loadTimerText();   // Load timer-related copy
+  loadRankings();    // Load result rankings/titles
 });
 
 // Fade-in Logo Animation
@@ -98,8 +99,11 @@ function startQuizWithQuestions(questions) {
   let currentQuestion = 0;
   let timer = 300; // 5 minutes in seconds
   // let timer = 20; // testing purposes
-  let score = 0; // Track total score
+  let correctCount = 0; // Track number correct
+  let score = 0; // Score is sum of weights (we will set all weights to 5 for a clean /100)
   let inGracePeriod = false;
+  const missedQuestions = []; // store missed questions (wrong + unanswered on timeout)
+  const missedByText = new Set(); // de-dupe by question text
 
   const quizContainer = document.querySelector('.quiz-container');
   quizContainer.innerHTML = `
@@ -222,7 +226,20 @@ function startQuizWithQuestions(questions) {
                 const selectedIndex = parseInt(e.target.value, 10);
                 const isCorrect = selectedIndex === question.correct;
                 if (isCorrect) {
-                  score += question.weight; // Add weight if correct
+                  correctCount += 1;
+                  score += question.weight;
+                } else {
+                  // Track missed question for review
+                  if (!missedByText.has(question.text)) {
+                    missedByText.add(question.text);
+                    missedQuestions.push({
+                      text: question.text,
+                      not_ready: question.not_ready || "",
+                      selected: question.options?.[selectedIndex],
+                      correct: question.options?.[question.correct],
+                      reason: "wrong",
+                    });
+                  }
                 }
 
                 const selectedLabel = e.target.closest('.answer-option');
@@ -263,29 +280,78 @@ function startQuizWithQuestions(questions) {
   }
 
   function endQuiz() {
-    // Calculate total score and percentage
-    const maxScore = quizQuestions.reduce((sum, q) => sum + q.weight, 0);
-    const scorePercentage = Math.round((score / maxScore) * 100);
+    // If the timer ended mid-quiz, treat remaining questions as missed (unanswered)
+    if (currentQuestion < quizQuestions.length) {
+      for (let i = currentQuestion; i < quizQuestions.length; i += 1) {
+        const q = quizQuestions[i];
+        if (q?.text && !missedByText.has(q.text)) {
+          missedByText.add(q.text);
+          missedQuestions.push({
+            text: q.text,
+            not_ready: q.not_ready || "",
+            reason: "unanswered",
+          });
+        }
+      }
+    }
 
-    // Determine category based on score
-    let resultMessage = '';
-    if (scorePercentage >= 90) {
-      resultMessage = "Blockchain Genius";
-    } else if (scorePercentage >= 70) {
-      resultMessage = "Crypto Catastrophe Avoidance Expert";
-    } else if (scorePercentage >= 50) {
-      resultMessage = "Still Learning, But Safer";
-    } else {
-      resultMessage = "Future Rug Pull Enthusiast";
+    // Calculate total score and percentage (weights, but we standardize weights to 5)
+    const totalQuestions = quizQuestions.length;
+    const missedCount = missedQuestions.length;
+    const maxScore = quizQuestions.reduce((sum, q) => sum + q.weight, 0);
+    const scorePercentage = maxScore > 0 ? Math.round((score / maxScore) * 100) : 0;
+
+    // Determine category + review template using rankings.yaml (fallbacks included)
+    const rankingResult = getRankingResult(scorePercentage);
+    const resultMessage = rankingResult.title;
+
+    // Build review line: join missed not_ready blurbs with " & "
+    const notReadyList = missedQuestions
+      .map((m) => m.not_ready)
+      .filter(Boolean)
+      .join(" & ");
+
+    const reviewTemplate = rankingResult.tier?.review;
+    const reviewLine =
+      reviewTemplate && missedCount > 0 && missedCount < totalQuestions
+        ? formatTemplate(reviewTemplate, {
+            title: resultMessage,
+            missed: String(missedCount),
+            not_ready_list: notReadyList || "Review the questions you missed.",
+          })
+        : "";
+
+    // Persist missed questions to browser storage for later viewing
+    try {
+      localStorage.setItem(
+        "phishbait_last_missed",
+        JSON.stringify({
+          saved_at: new Date().toISOString(),
+          score: score,
+          max_score: maxScore,
+          percent: scorePercentage,
+          tier: rankingResult.tier?.id || null,
+          title: resultMessage,
+          missed: missedQuestions,
+        })
+      );
+    } catch (e) {
+      // ignore storage errors (private mode, disabled storage, etc.)
     }
 
     // Display results
     quizContainer.innerHTML = `
       <div class="final-results">
         <h1>Your Results</h1>
-        <p>Total Score: ${score} / ${maxScore}</p>
-        <p>Percentage: ${scorePercentage}%</p>
+        <p>Correct: ${correctCount} / ${totalQuestions}</p>
+        <p>Missed: ${missedCount}</p>
         <p>Category: <strong>${resultMessage}</strong></p>
+        ${
+          reviewLine
+            ? `<p class="result-review"><em>${reviewLine}</em></p>`
+            : ""
+        }
+        <p><em>Missed ${missedCount} question(s)… that’s ~${missedCount * 4}x more ways to get wrecked. (Kidding. Mostly.)</em></p>
         <button class="restart-quiz">Restart Quiz</button>
       </div>
     `;
@@ -380,6 +446,62 @@ function loadTimerText() {
       console.error('Error loading timer text:', error);
       // We fall back to hard-coded strings in startQuizWithQuestions if this fails
     });
+}
+
+function loadRankings() {
+  fetch('data/rankings.yaml')
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Failed to load rankings.yaml: ${response.statusText}`);
+      }
+      return response.text();
+    })
+    .then((yamlText) => {
+      const rankings = jsyaml.load(yamlText).rankings;
+      window.phishbaitRankings = rankings;
+    })
+    .catch((error) => {
+      console.error('Error loading rankings:', error);
+      // We fall back to hard-coded tiers in getRankingTitle()
+    });
+}
+
+function getRankingTitle(scorePercentage) {
+  const tiers = window.phishbaitRankings?.tiers;
+  if (Array.isArray(tiers) && tiers.length > 0) {
+    // sort descending by min_percent, pick first match
+    const sorted = [...tiers].sort((a, b) => (b.min_percent ?? 0) - (a.min_percent ?? 0));
+    const tier = sorted.find((t) => scorePercentage >= (t.min_percent ?? 0)) || sorted[sorted.length - 1];
+    const titles = Array.isArray(tier?.titles) ? tier.titles.filter(Boolean) : [];
+    if (titles.length > 0) {
+      return titles[Math.floor(Math.random() * titles.length)];
+    }
+  }
+
+  // Fallback (matches old behavior roughly)
+  if (scorePercentage >= 90) return "Blockchain Genius";
+  if (scorePercentage >= 70) return "Crypto Catastrophe Avoidance Expert";
+  if (scorePercentage >= 50) return "Still Learning, But Safer";
+  return "Future Rug Pull Enthusiast";
+}
+
+function getRankingResult(scorePercentage) {
+  const tiers = window.phishbaitRankings?.tiers;
+  if (Array.isArray(tiers) && tiers.length > 0) {
+    const sorted = [...tiers].sort((a, b) => (b.min_percent ?? 0) - (a.min_percent ?? 0));
+    const tier = sorted.find((t) => scorePercentage >= (t.min_percent ?? 0)) || sorted[sorted.length - 1];
+    const titles = Array.isArray(tier?.titles) ? tier.titles.filter(Boolean) : [];
+    const title = titles.length > 0 ? titles[Math.floor(Math.random() * titles.length)] : getRankingTitle(scorePercentage);
+    return { tier, title };
+  }
+  return { tier: null, title: getRankingTitle(scorePercentage) };
+}
+
+function formatTemplate(template, vars) {
+  return String(template).replace(/\{(\w+)\}/g, (_, key) => {
+    const v = vars[key];
+    return v === undefined || v === null ? "" : String(v);
+  });
 }
 
 
