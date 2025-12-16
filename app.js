@@ -351,7 +351,7 @@ function startQuizWithQuestions(questions) {
             ? `<p class="result-review"><em>${reviewLine}</em></p>`
             : ""
         }
-        <p><em>Missed ${missedCount} question(s)… that’s ~${missedCount * 4}x more ways to get wrecked. (Kidding. Mostly.)</em></p>
+        <p><em>Missed ${missedCount} question(s)… that’s ~${missedCount * 4}x more ways to get wrecked. (Kidding. Kind of.)</em></p>
         <button class="restart-quiz">Restart Quiz</button>
       </div>
     `;
