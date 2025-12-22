@@ -1,0 +1,250 @@
+questions:
+  - text: "You receive an unsolicited direct message on X (Twitter) from an account claiming to be official exchange support, asking for your wallet's seed phrase to fix an urgent problem. What should you do?"
+    options:
+      - "Provide the seed phrase so they can quickly secure your funds."
+      - "Ignore the message, report the account for phishing, and never share your seed phrase."
+      - "Ask them to confirm their @username and then decide."
+      - "Share only part of your seed phrase so they can't take everything."
+    not_ready: "If you hand over your seed phrase, you hand over your wallet. Real support never asks. Ever."
+    correct: 1
+    weight: 5
+
+  - text: "You see a reply on X (Twitter) from an account named @BinanceSupport_Help offering you support. What is the safest response?"
+    options:
+      - "DM them your Photo ID after checking their profile and bio."
+      - "Ignore the reply, report the account for impersonation/scam, never share your seed phrase, and if you still need help, go to the exchange’s official website/app to open a support ticket or use the handle linked there."
+      - "Ask them to send a selfie with their ID to prove they are real support."
+      - "Follow the account first; if they follow you back, they are likely legit."
+    not_ready: "Support that finds you in replies is phishing with a logo. Report/ignore—go official."
+    correct: 1
+    weight: 5
+
+  - text: "An email from 'support@cryptosite.com' informs you of suspicious activity and includes a link to reset your password. What is the safest course of action?"
+    options:
+      - "Click the link in the email and reset your password immediately."
+      - "Ignore the email; all such alerts are scams."
+      - "Open a new browser tab, manually go to the exchange’s official website or app (without using the email link), and check your account or contact support from there."
+      - "Forward the email to friends so they can be aware."
+    not_ready: "Email links are how accounts get ‘secured’ into someone else’s hands. Open the site yourself."
+    correct: 2
+    weight: 5
+
+  - text: "While browsing a crypto forum, a user offers 'expert support' and requests remote access to your computer to fix a wallet issue. How should you respond?"
+    options:
+      - "Allow remote access so they can quickly diagnose the issue."
+      - "Request their credentials, then allow remote access if they seem legitimate."
+      - "Politely decline remote access and contact the wallet or exchange through official support channels."
+      - "Share your screen but avoid granting control."
+    not_ready: "Remote access is “please rob me faster.” Don’t give strangers your keyboard."
+    correct: 2
+    weight: 5
+
+  - text: "A pop-up on a crypto website claims your wallet is compromised and tells you to enter your private key to secure it. What should you do?"
+    options:
+      - "Enter your private key so the tool can secure your wallet."
+      - "Close the pop-up, avoid entering any keys, and run a malware/virus scan on your device."
+      - "Contact the website's support using the link in the pop-up."
+      - "Disconnect from the internet and store your private key in a text file."
+    not_ready: "Pop-up + private key = instant drain. Close it. Don’t type keys into websites."
+    correct: 1
+    weight: 5
+
+  - text: "You receive a phone call from someone claiming to be from your crypto exchange support team, asking for your account details and 2FA code to verify suspicious activity. How should you proceed?"
+    options:
+      - "Provide the requested details so they can secure your account."
+      - "Hang up immediately and contact the exchange using the official app or website support."
+      - "Ask for a callback number and phone extension, then call them back."
+      - "Stay on the call and ask them security questions to confirm they are real."
+    not_ready: "Reading a 2FA code out loud is approving the hack. Hang up—contact support via the app/site."
+    correct: 1
+    weight: 5
+
+  - text: "After posting about a wallet issue on social media, you receive a DM from an account offering help and asking for your recovery phrase. What is the appropriate response?"
+    options:
+      - "Share the recovery phrase since you initiated the conversation."
+      - "Ignore the message, report the user as a scammer, and never share your recovery phrase."
+      - "Ask them for their @username and website before deciding."
+      - "Share only the first half of your recovery phrase."
+    not_ready: "Recovery phrase = master key. Share it and you’re donating your funds."
+    correct: 1
+    weight: 5
+
+  - text: "On Telegram, a user with the display name 'Project Support' and username '@ProjectSupportHelp1' DMs you first, asking for your seed phrase. How should you verify and respond?"
+    options:
+      - "Check if their display name looks official, then send your seed phrase if it does."
+      - "Open the project's official website or docs and only trust Telegram usernames listed there; never share your seed phrase."
+      - "Ask them to add you as a contact before sharing anything."
+      - "Join more Telegram groups to see if others trust them."
+    not_ready: "Display names lie for free. Verify the exact username on the official site—never share your seed."
+    correct: 1
+    weight: 5
+
+  - text: "You join an 'official' Telegram group for a DeFi project. A 'support admin' DMs you privately, asking you to connect your wallet to a link they send. What is the safest action?"
+    options:
+      - "Click the link and connect your wallet so they can inspect it."
+      - "Ask them if they are really an admin and proceed if they say yes."
+      - "Ignore the DM, block the user, and confirm in the public group or on the project's official site that admins never DM first."
+      - "Disconnect your wallet from all dApps and then click the link."
+    not_ready: "Admins don’t DM first—scammers do. Block and verify publicly."
+    correct: 2
+    weight: 5
+
+  - text: "You receive a Discord DM from someone with an 'Admin' tag in a crypto server, asking for your transaction ID and wallet address to help investigate an issue. What is the safest response?"
+    options:
+      - "Share all requested details so they can investigate."
+      - "Verify in the public server channels or server admin list that this account is really an admin, and share only non-sensitive info like TX IDs if needed."
+      - "Immediately delete your wallet and create a new one."
+      - "Send them screenshots of your seed phrase for clarity."
+    not_ready: "An Admin tag isn’t proof. Verify in public—share only non-sensitive info (like TXID) if needed."
+    correct: 1
+    weight: 5
+
+  - text: "An email claims you've won a cryptocurrency giveaway and asks you to click a link to claim your prize. What is the safest action?"
+    options:
+      - "Click the link to claim your prize quickly."
+      - "Reply and ask how they got your email address."
+      - "Delete the email or mark it as spam; consider it a likely phishing attempt."
+      - "Forward the email to friends so they can try to win too."
+    not_ready: "If you ‘won’ without entering, you won a scam. Delete it."
+    correct: 2
+    weight: 5
+
+  - text: "A website offers a 'free security audit' of your crypto wallet and asks for your private key or seed phrase to perform the audit. How should you proceed?"
+    options:
+      - "Provide the private key so they can run the audit."
+      - "Research the service, and if it has many positive reviews, proceed."
+      - "Decline the offer entirely and contact your wallet provider's official support if you have concerns."
+      - "Ask if they can perform the audit with a partial key instead."
+    not_ready: "Any “audit” that needs your keys is just theft with paperwork. Hard pass."
+    correct: 2
+    weight: 5
+
+  - text: "On X (Twitter), two accounts claim to be the same project's official handle: '@ProjectOfficial' and '@Project0fficial'. Both use the same logo. How should you decide which, if any, to trust?"
+    options:
+      - "Pick the account with more followers; it's probably the real one."
+      - "Trust the account whose bio mentions 'official'."
+      - "Use the project's website, whitepaper, or app to find the exact linked X handle and trust only that one."
+      - "Trust both accounts since scammers can't use the same logo."
+    not_ready: "That “0” is a trapdoor. Trust only the handle linked from the official site/app."
+    correct: 2
+    weight: 5
+
+  - text: "A friend sends you a Telegram handle '@CryptoSupportTeam' and says it's the 'real support' for a big exchange. They tell you to DM that account with your issue. What is the safest next step?"
+    options:
+      - "DM the handle and share your account details since your friend recommended it."
+      - "Ask the Telegram account to prove they are real by showing chat screenshots."
+      - "Independently verify support links on the exchange's official website/app instead of trusting third-party handles."
+      - "Search Telegram for similar usernames and pick the one with the longest history."
+    not_ready: "Friends can be wrong; scammers count on it. Verify support links on the official site/app."
+    correct: 2
+    weight: 5
+
+  - text: "You land on a site called 'Dapp Mainnet Support' that offers to fix wallet issues like 'Migrate', 'Rectification', and 'Fix Bugs'. Every path leads to a screen asking you to enter your 12 or 24-word seed phrase to continue. What should you do?"
+    options:
+      - "Enter your seed phrase so the tool can complete the troubleshooting."
+      - "Close the site immediately; never enter your seed phrase on any website pretending to be a support dApp."
+      - "Try a different option like 'Claim Airdrop' instead of 'Fix Bugs'."
+      - "Refresh the page and try again until it connects automatically."
+    not_ready: "If the fix requires your seed phrase, it’s not a fix—it’s a drain."
+    correct: 1
+    weight: 5
+
+  - text: "A 'Web3 Support Center' page says: 'Automatic wallet connection failed. Please use manual connection method' and offers 'Connect via Secret Recovery Phrase / Private Key / Keystore JSON'. What is the safest action?"
+    options:
+      - "Use the manual connection option with your seed phrase so support can verify ownership."
+      - "Use the keystore JSON option since it is more secure than the seed phrase."
+      - "Leave the site; only enter your seed phrase/private key inside your actual wallet app or hardware device, never on random web pages."
+      - "Paste a different wallet's seed phrase to test the site."
+    not_ready: "“Manual connection” shouldn’t mean manual robbery. Leave—keys belong only inside your wallet."
+    correct: 2
+    weight: 5
+
+  - text: "A troubleshooting page says: 'To fix wallet errors and recover stuck funds, enter the same 12/24-word phrase you used when creating your wallet. We do not store or share your recovery phrase.' How should you respond?"
+    options:
+      - "Enter your recovery phrase because they say they don't store it."
+      - "Enter only 3–4 words first to see if the page is legit."
+      - "Refuse to enter the phrase, close the page, and check your wallet directly through the official app or extension."
+      - "Email your recovery phrase to support instead so it is not entered on the site."
+    not_ready: "“We don’t store it” = trust-me-bro. Never type your recovery phrase into a website."
+    correct: 2
+    weight: 5
+
+  - text: "A site claiming to 'recover stuck funds' shows a form with fields labeled 'Word 1, Word 2, Word 3…' under the heading 'Verify Wallet Ownership'. What is the correct security mindset here?"
+    options:
+      - "This is normal for advanced support; enter your words carefully so they match."
+      - "Type the words but scramble the order slightly for safety."
+      - "Understand that any page asking for all your seed words is a scam, regardless of branding; never fill this form."
+      - "Only fill it out if you opened the site from a link in a Discord or Telegram support DM."
+    not_ready: "Word 1–24 forms are wallet vacuums. Close the tab and keep your words offline."
+    correct: 2
+    weight: 5
+
+  - text: "On Telegram, a 'support' contact tells you they have 'conducted a diagnostic assessment' on your screenshot and says your wallet has an 'internal UI bug issue' that requires a special validation process to rectify, then offers a link. What is the safest response?"
+    options:
+      - "Follow their validation link and complete whatever steps they send, since they identified the bug."
+      - "Stop engaging, report/block the account, and only follow instructions from official docs or support pages you open yourself (not links from DMs)."
+      - "Ask them to start a video call and share their screen while they guide you through the validation."
+      - "Give them your seed words so they can run the validation process for you."
+    not_ready: "They diagnosed you with click-itis and prescribed a link. Don’t click—block and use official docs."
+    correct: 1
+    weight: 5
+
+  - text: "You see a well-known influencer's name and photo being used to promote an 'exclusive crypto investment group' on Telegram, promising early access and huge returns. What is the safest assumption?"
+    options:
+      - "Join quickly before it's full — opportunities like this are rare."
+      - "Assume it's a scam; treat any 'exclusive investment group' solicitation as fraudulent, no matter whose name is on it."
+      - "Ask the group admin for proof it's the real influencer."
+      - "It might be real if others in the group are talking positively about it."
+    not_ready: "“Exclusive” + “huge returns” = huge scam. Assume fake."
+    correct: 1
+    weight: 5
+
+  - text: "A social media account with a verification badge shares some decent educational content, but frequently mixes it with posts like 'Buy this token before it explodes!' and 'Join my paid group now!' What's the most accurate interpretation?"
+    options:
+      - "The influencer is just passionate about helping people invest."
+      - "This account is likely running a monetized shill strategy, not offering neutral or reliable education."
+      - "Verification badges mean they're trustworthy and aligned with your interests."
+      - "They’re just trying to make a living, so it's safe to follow their investment calls."
+    not_ready: "A checkmark isn’t a halo. If every lesson ends in a pitch, you’re the product."
+    correct: 1
+    weight: 5
+
+  - text: "Someone on WhatsApp claims to be a famous crypto educator and invites you to a 'private investment group' with guaranteed returns. You've seen that real educators say they never DM about investments. What should you do?"
+    options:
+      - "Ask them to prove their identity before deciding."
+      - "Politely decline, block/report the account, and treat it as a guaranteed scam."
+      - "Join the group to see if it's real, then decide."
+      - "Request more details before making any judgment."
+    not_ready: "Guaranteed returns are guaranteed scams. Block/report."
+    correct: 1
+    weight: 5
+
+  - text: "Which of the following is a strong indicator that an influencer is primarily a financial manipulator rather than a genuine educator?"
+    options:
+      - "They post about crypto and use common hashtags like #bitcoin and #crypto."
+      - "They mix surface‑level 'education' with emotional politics, fear ('they're against us'), and constant pitches to invest in their tokens, courses, or paid groups."
+      - "They speak passionately about financial freedom and independence."
+      - "They occasionally host livestreams to answer questions."
+    not_ready: "If “education” ends in fear + hype + buy-now, it’s marketing—not teaching."
+    correct: 1
+    weight: 5
+
+  - text: "An account claims they are hiring for the 'official team' of a well-known crypto educator and asks you to send your resume and details via Telegram. The educator has publicly said they don't recruit or hire through DMs. What is the correct response?"
+    options:
+      - "Reply to verify if the offer is real."
+      - "Send the resume, but be cautious."
+      - "Ignore and report it, it's a scam."
+      - "Ask in a random group if anyone else got the same message."
+    not_ready: "Real hiring doesn’t happen in random Telegram DMs. Protect your info—report it."
+    correct: 2
+    weight: 5
+  
+  - text: "On X (Twitter), you ask for help with your crypto exchange account. Someone replies 'check DMs' from a profile using the exchange’s logo and a username like 'Exchang_Officel_Support'. They say they need you to send funds to a new address to activate your account. What should you do?"
+    options:
+      - "Send funds to the new account to activate it and prove you’re the rightful owner."
+      - "This is a scam. Never send funds to random addresses claiming to be support."
+      - "Ask for a support ticket number and continue the conversation cautiously."
+      - "Since they have the exchange's logo, it's probably safe to trust."
+    not_ready: "Pay-to-activate is pay-to-lose. Real support won’t ask you to send crypto."
+    correct: 1
+    weight: 5

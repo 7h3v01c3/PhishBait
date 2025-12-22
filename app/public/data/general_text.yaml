@@ -1,0 +1,8 @@
+general_text:
+  tagline: "The Don’t Take the Bait—Learn Before You Burn Quiz."
+  error: "Oops! Something went wrong loading the quiz. Please try again later or refresh the page."
+  warning: "Warning: If this quiz is rough, the real world will be worse."
+  encouragement: "Failing this is your sign to slow down, learn more, and delay your jump—because you will lose."
+  share: "Think your friends can beat your score? Share this and find out!"
+  footer: "PhishBait.xyz was created by TheVoice (@ TheVoice.dev) as a support tool—made with humor and others sharing their hard-earned life lessons."
+  version: "0.4.0"

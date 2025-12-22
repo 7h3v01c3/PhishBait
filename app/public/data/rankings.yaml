@@ -1,0 +1,45 @@
+rankings:
+  # Tiers are evaluated by score percentage (0-100).
+  # The highest tier whose min_percent is <= your score wins.
+  tiers:
+    - id: ready
+      min_percent: 100
+      titles:
+        - "✅ READY: 100% (Seed Phrase Untouched)"
+        - "✅ READY: Cold-Storage Certified Consciousness"
+        - "✅ READY: PhishBait? Not Today, Not Tomorrow — Stand Tall!"
+        - "✅ READY: Perfect Score (Nothing But Applause)"
+
+    - id: close
+      min_percent: 95
+      titles:
+        - "Almost Ready (But Not Yet)"
+        - "Close… Don’t Get Cocky"
+        - "One Bad Click Away"
+      review: "🔒 {title}: Missed {missed}; {not_ready_list}"
+
+    - id: decent
+      min_percent: 80
+      titles:
+        - "Pretty Good (Still Not Ready)"
+        - "Above Average… Below Ready"
+        - "Scammer Resistant (Not Immune)"
+      review: "🔒 {title}: Missed {missed}; {not_ready_list}"
+
+    - id: shaky
+      min_percent: 65
+      titles:
+        - "Not Ready: Getting Warmer"
+        - "Cautious… But Clickable"
+        - "One DM Away From Trouble"
+      review: "🔒 {title}: Missed {missed}; {not_ready_list}"
+
+    - id: yikes
+      min_percent: 0
+      titles:
+        - "🔒 NOT READY: Hot Wallet, Hot Mess — Just NO!"
+        - "🔒 NOT READY: Certified Link Tapper (Making Scammers Happy)"
+        - "🔒 NOT READY: Lose All Your Crypto — Go Straight Back to the Bank"
+        - "🔒 NOT READY: Future Rug Pull Contestant — Yes, It’s All Gone"
+
+

@@ -1,0 +1,16 @@
+timer:
+  low_hints:
+    - "Running low on time? You get one mercy minute."
+    - "Out of time or just overthinking? Take another 60 seconds."
+    - "If this feels fast, real scammers will pressure more. Here's one more minute."
+    - "Brains lag. Timers don’t. Have another minute to catch up."
+  bonus_messages:
+    - "Bonus minute activated. Real scammers aren't this kind."
+    - "You just time‑traveled 60 seconds into the future. Use it wisely."
+    - "Extra time granted. Consider this your 'learn before you burn' extension."
+    - "You bought yourself a minute with a click. In crypto, it usually costs more."
+  grace_messages:
+    - "Time's basically up. We'll score this in 20 seconds—no pressure, just do your best click-panic."
+    - "Final 20 seconds. Answer now, or this attempt is going on your permanent record. (Kidding. Mostly.)"
+    - "Clock's done. You’ve got 20 seconds of mercy before we lock in your score."
+    - "Last 20 seconds. Scammers don’t give you this much warning."
